@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 /************************************************************
  * Cette me permet de créer toutes les tables de notre base *
-*************************************************************/
+ *************************************************************/
 class CreateUsersTable extends Migration
 {
     /**
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('userId');
+            $table->bigIncrements('id');
             $table->string('nomPrenom');
             $table->string('email')->unique()->nullable();
             $table->string('tel')->unique();
@@ -64,11 +64,11 @@ class CreateUsersTable extends Migration
             $table->string('latEntreprise', 20);
             $table->string('longEntreprise', 20);
             $table->string('descripPlaceEntreprise');
-            $table->unsignedBigInteger('userId')->nullable();
+            $table->unsignedBigInteger('id')->nullable();
             $table->unsignedBigInteger('catId')->nullable();
             $table->unsignedBigInteger('comId')->nullable();
-            $table->foreign('userId')
-                ->references('userId')->on('users')
+            $table->foreign('id')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreign('catId')
                 ->references('catId')->on('categories')
@@ -84,9 +84,9 @@ class CreateUsersTable extends Migration
             $table->string('libAdresse');
             $table->string('latAdresse');
             $table->string('longAdresse');
-            $table->unsignedBigInteger('userId');
-            $table->foreign('userId')
-                ->references('userId')->on('users')
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->timestamps();
         });
@@ -150,10 +150,10 @@ class CreateUsersTable extends Migration
 //                ->references('prodServId')->on('prodservs')
 //                ->onDelete('cascade');
 //            $table->foreign('customUserId')
-//                ->references('userId')->on('users')
+//                ->references('id')->on('users')
 //                ->onDelete('cascade');
-//            $table->foreign('userId')
-//                ->references('userId')->on('users')
+//            $table->foreign('id')
+//                ->references('id')->on('users')
 //                ->onDelete('cascade');
             $table->timestamps();
         });

@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Utilities\myUtilitiesClass;
 use MercurySeries\Flashy\Flashy;
+use App\Http\Controllers\Auth\LoginController as loginController;
 
-class userController extends Controller
+class userController extends loginController
 {
     use AuthenticatesUsers;
+
     /**
      * Handle an authentication attempt.
      *
@@ -21,30 +22,13 @@ class userController extends Controller
      *
      * @return Response
      */
+
     public function authenticate(Request $request)
     {
         $isGoodCredential = false;
         $credentials = ['tel' => $request->tel, 'password' => $request->password, 'numActiv' => 1];
         if (Auth::attempt($credentials)) {
             $isGoodCredential = true;
-            //Appeller une methode pour dire que l'user est connecter
-            $userArray['user']['id'] = Auth::user()->userId;
-            $userArray['user']['nomPnom'] = Auth::user()->nomPrenom;
-            $userArray['user']['email'] = Auth::user()->email;
-            $userArray['user']['tel'] = Auth::user()->tel;
-            $userArray['user']['dateNaiss'] = Auth::user()->dateNaiss;
-            $userArray['user']['numActiv'] = Auth::user()->numActiv;
-            $userArray['user']['userActiv'] = Auth::user()->userActiv;
-            $userArray['user']['codeActivNum'] = Auth::user()->codeActivNum;
-            $userArray['user']['password'] = Auth::user()->password;
-            $userArray['user']['avatar'] = Auth::user()->avatar;
-            $userArray['user']['typeUser'] = Auth::user()->typeUser;
-            $userArray['user']['dispoUser'] = Auth::user()->dispoUser;
-            $userArray['user']['genreUser'] = Auth::user()->genreUser;
-            $userArray['user']['comId'] = Auth::user()->comId;
-            $userArray['user']['remember_token'] = Auth::user()->remember_token;
-            $userArray['user']['created_at'] = Auth::user()->created_at;
-
             $msg = "Heureux de vous revoir ";
             $msg .= (Auth::user()->genreUser == "M") ? "M. ": 'Mme. ';
             $msg .= Auth::user()->nomPrenom;
@@ -54,11 +38,10 @@ class userController extends Controller
             Flashy::error($msg);
             $isGoodCredential = false;
         }
-
         return ($isGoodCredential) ? redirect('/Utilisateur/Profil') : back();
     }
 
-    public function userLogout()
+    public function logout(Request $request)
     {
         Flashy::message("A tres bientot !!");
         Auth::logout();

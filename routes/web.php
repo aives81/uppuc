@@ -67,4 +67,4 @@ Route::get('/Entreprise/Ajouter-une-entreprise', 'entrepriseController@create');
 //Sur les pages de traitement rajouter les ->auth();
 Route::post('/addEntreprise', 'entrepriseController@store');
 
-Route::get('/Utilisateur/Logout', 'userController@userLogout');
+Route::get('/Utilisateur/Logout', 'userController@logout');
