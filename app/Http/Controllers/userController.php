@@ -34,7 +34,7 @@ class userController extends loginController
             $msg .= Auth::user()->nomPrenom;
             Flashy::message($msg);
         }else{
-            $msg = "Une erreur s'est produite ! Vérifiez votre numéro de téléphone ou votre mot de passe";
+            $msg = "Une erreur s'est produite ! Confirmez votre numéro de téléphone ou votre mot de passe";
             Flashy::error($msg);
             $isGoodCredential = false;
         }

@@ -93,7 +93,13 @@
                                 <div class="btn-group">
                                     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                        class="p-0 btn">
-                                        <img width="42" class="rounded-circle" src="{{asset('assets/images/avatars/1.jpg')}}" alt="">
+                                        <img width="42" class="rounded-circle" src="@if(Auth::user()->avatar) {{asset(Auth::user()->avatar)}} @else
+                                            @if(Auth::user()->genreUser == "M")
+                                                {{asset('assets/images/avatars/mAvatar.png')}}
+                                            @else
+                                                {{asset('assets/images/avatars/wAvatar.png')}}
+                                            @endif
+                                        @endif" alt="">
                                         {{Auth::user()->nomPrenom}}
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                     </a>

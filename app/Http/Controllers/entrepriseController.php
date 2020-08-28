@@ -87,7 +87,7 @@ class entrepriseController extends Controller
                 'descripPlaceEntreprise' => $request->descriptionEmplacement,
                 'latEntreprise' => $request->lat,
                 'longEntreprise' => $request->lng,
-                'userId' => $request->user,
+                'id' => $request->user,
                 'entrepriseJourDispo' => $workingDays,
                 'entrepriseHeureDispo' => $workingHours,
                 'entrepriseSlug' => str::slug($request->title),

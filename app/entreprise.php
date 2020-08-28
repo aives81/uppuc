@@ -16,7 +16,7 @@ class entreprise extends Model
             'descripPlaceEntreprise',
             'latEntreprise',
             'longEntreprise',
-            'userId',
+            'id',
             'entrepriseJourDispo',
             'entrepriseHeureDispo',
             'entrepriseSlug'
@@ -27,7 +27,7 @@ class entreprise extends Model
     }
 
     function user(){
-        return $this->belongsTo('App\User', 'userId');
+        return $this->belongsTo('App\User', 'id');
     }
 
     function commune(){

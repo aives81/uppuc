@@ -79,17 +79,17 @@
                     <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
                         <li class="nav-item">
                             <a role="tab" class="nav-link active" id="tab-0" data-toggle="tab" href="#tab-content-0">
-                                <span>Ajout d'une entreprise</span>
+                                <span>une entreprise de plus !!</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a role="tab" class="nav-link" id="tab-1" data-toggle="tab" href="#tab-content-1">
-                                <span>Ajout de produits</span>
+                                <span>Encore plus de produits</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
-                                <span>Ajout d'images</span>
+                                <span>Illustrez mieux vaux entreprises</span>
                             </a>
                         </li>
                     </ul>
@@ -289,7 +289,7 @@
 
                                         <div class="main-card mb-3 card">
                                             <div class="card-body">
-                                                <input type="hidden" name="user" value="1">
+                                                <input type="hidden" name="user" value="{{Auth::user()->id}}">
                                                 <button class="btn btn-success" type="submit" style="float: left; width: 100%">Et Hop ! On enregistre <i class="fa fa-send"></i></button>
                                             </div>
                                         </div>
