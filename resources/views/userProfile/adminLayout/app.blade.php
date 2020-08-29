@@ -559,12 +559,8 @@
             html += '<tr>';
             html += '<td><input type="text" required name="designation[]" class="form-control" placeholder="Ex: Gaz total"></td>';
             html += '<td><select class="form-control" name="type[]" required><option value="">Choisissez le type</option><option value="prod">Produit</option><option value="serv">Service</option></select></td>';
-            html += '<td><div class="input-group">\n'
-            html +=   '<div class="input-group-prepend"><span class="input-group-text">$</span></div>\n'
-            html +=    '<input placeholder="Dolla dolla billz yo!" type="number" class="form-control">\n'
-            html +=    '<div class="input-group-append"><span class="input-group-text">$</span></div>\n'
-            html +=    '</div></td>';
-            html += '<td><input type="file" required name="img[]" class="form-control"></td>';
+            html += '<td><input required placeholder="50000" type="number" name="price[]" class="form-control"></td>\n';
+            html += '<td><input type="file" name="img[]" required class="form-control"></td>';
             html += '<td><button style="background: #dc3545;" type="button" name="remove" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></button></td></tr>';
             $('#item_table').append(html);
         });

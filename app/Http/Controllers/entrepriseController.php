@@ -78,7 +78,7 @@ class entrepriseController extends Controller
 
         $workingHours = implode("|", $tabHeurOuvFerm);
 
-        $entreprise = new entreprise([
+        $addEntreprise = new entreprise([
                 'entrepriseTitle' => $request->title,
                 'entrepriseDescription' => $request->description,
                 'catId' => $request->categorie,
@@ -93,7 +93,7 @@ class entrepriseController extends Controller
                 'entrepriseSlug' => str::slug($request->title),
             ]);
 
-        $entreprise->save();
+        $addEntreprise->save();
 
         //Modifier le message plutard pour afficher le nom de l'user connecté
         $successMsg = "Félicitation ! Votre entreprise a été enregistrée avec successss !!";

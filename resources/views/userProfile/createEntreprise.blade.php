@@ -122,7 +122,7 @@
                                                         <div class="input-group-prepend"><span class="input-group-text">Nom de l'entreprise</span>
                                                         </div>
                                                         <input placeholder="Ex: Un Pas Pour Une Course" type="text"
-                                                               name="title" class="form-control">
+                                                               value="{{ old("title") }}" name="title" class="form-control">
                                                     </div>
                                                     <br>
                                                     <div class="input-group">
@@ -130,25 +130,28 @@
                                                         </div>
                                                         <textarea class="form-control" placeholder="Bla bla bla bla bla"
                                                                   name="description" id="" cols="92"
-                                                                  rows="5"></textarea>
+                                                                  rows="5">{{ old("description") }}</textarea>
                                                     </div>
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="input-group">
-                                                                <div class="input-group-prepend"><span class="input-group-text">Indiquez la catégorie de l'entreprise</span>
+                                                                <div class="input-group-prepend"><span
+                                                                        class="input-group-text">Indiquez la catégorie de l'entreprise</span>
                                                                 </div>
                                                                 <select name="categorie" class="form-control" id="">
                                                                     <option value="">Choisissez la catégorie</option>
                                                                     @foreach(App\categorie::all() as $categorie)
-                                                                        <option value="{{$categorie->catId}}">{{$categorie->libCat}}</option>
+                                                                        <option {{ (old("categorie") == $categorie->catId ? "selected":"") }}
+                                                                            value="{{$categorie->catId}}">{{$categorie->libCat}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="input-group">
-                                                                <div class="input-group-append"><span class="input-group-text">Choisissez la photo de couverture</span>
+                                                                <div class="input-group-append"><span
+                                                                        class="input-group-text">Choisissez la photo de couverture</span>
                                                                 </div>
                                                                 <input name="img" type="file" class="form-control">
                                                             </div>
@@ -166,79 +169,90 @@
 
                                                     <?php
 
-                                                        $tabJour = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-                                                        for ($i = 0; $i < count($tabJour) ; $i++) {
+                                                    $tabJour = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+                                                    for ($i = 0; $i < count($tabJour) ; $i++) {
                                                     ?>
 
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="position-relative form-group">
-                                                                    <div>
-                                                                        <div class="custom-checkbox custom-control">
-                                                                            <div class="position-relative form-check">
-                                                                                <label class="form-check-label">
-                                                                                    <input type="checkbox"
-                                                                                           id="j<?= $i + 1; ?>"
-                                                                                           value="<?= $tabJour[$i]; ?>"
-                                                                                           name="j[]"
-                                                                                           onchange="voir(<?= $i + 1; ?>);"
-                                                                                           class="form-check-input">
-                                                                                    <?= $tabJour[$i]; ?>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-8">
-                                                                <div style="display: none;" id="div<?= $i + 1; ?>">
-
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <div class="input-group">
-                                                                                <div class="input-group-append"><span class="input-group-text">De</span></div>
-                                                                                <select class="form-control" onchange="checkVal(<?= $tabJour[$i]; ?>);"
-                                                                                        name="heureOuv<?= $tabJour[$i]; ?>"
-                                                                                        id="heureOuv<?= $tabJour[$i]; ?>">
-
-                                                                                    <option value="">Heure d'ouverture</option>
-
-                                                                                    <?php for ($j = 1; $j <= 24 ; $j++) { ?>
-
-                                                                                    <option
-                                                                                        value="<?= $j; ?>"><?= $j . "H"; ?></option>
-
-                                                                                    <?php } ?>
-
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="input-group">
-                                                                                <div class="input-group-append"><span class="input-group-text">à</span></div>
-                                                                                <select class="form-control" onchange="checkVal(<?= $tabJour[$i]; ?>);"
-                                                                                        name="heureFerm<?= $tabJour[$i]; ?>"
-                                                                                        id="heureFerm<?= $tabJour[$i]; ?>">
-
-                                                                                    <option value="">Heure de ferméture</option>
-
-                                                                                    <?php for ($j = 1; $j <= 24 ; $j++) { ?>
-
-                                                                                    <option
-                                                                                        value="<?= $j; ?>"><?= $j . "H"; ?></option>
-
-                                                                                    <?php } ?>
-
-                                                                                </select>
-                                                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="position-relative form-group">
+                                                                <div>
+                                                                    <div class="custom-checkbox custom-control">
+                                                                        <div class="position-relative form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input {{ (old("j") == $tabJour[$i] ? "checked":"") }}
+                                                                                       type="checkbox"
+                                                                                       id="j<?= $i + 1; ?>"
+                                                                                       value="<?= $tabJour[$i]; ?>"
+                                                                                       name="j[]"
+                                                                                       onchange="voir(<?= $i + 1; ?>);"
+                                                                                       class="form-check-input">
+                                                                                <?= $tabJour[$i]; ?>
+                                                                            </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                <?php } ?>
+                                                        <div class="col-md-8">
+                                                            <div style="display: none;" id="div<?= $i + 1; ?>">
+
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-append"><span
+                                                                                    class="input-group-text">De</span>
+                                                                            </div>
+                                                                            <select class="form-control"
+                                                                                    onchange="checkVal(<?= $tabJour[$i]; ?>);"
+                                                                                    name="heureOuv<?= $tabJour[$i]; ?>"
+                                                                                    id="heureOuv<?= $tabJour[$i]; ?>">
+
+                                                                                <option value="">Heure d'ouverture</option>
+
+                                                                                <?php for ($j = 1; $j <= 24 ; $j++) { ?>
+
+                                                                                <option {{ (old("heureOuv".$tabJour[$i]) == $j ? "selected":"") }}
+                                                                                    value="<?= $j; ?>">
+                                                                                    <?= $j . "H"; ?>
+                                                                                </option>
+
+                                                                                <?php } ?>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-append"><span
+                                                                                    class="input-group-text">à</span>
+                                                                            </div>
+                                                                            <select class="form-control"
+                                                                                    onchange="checkVal(<?= $tabJour[$i]; ?>);"
+                                                                                    name="heureFerm<?= $tabJour[$i]; ?>"
+                                                                                    id="heureFerm<?= $tabJour[$i]; ?>">
+
+                                                                                <option value="">Heure de ferméture</option>
+
+                                                                                <?php for ($j = 1; $j <= 24 ; $j++) { ?>
+
+                                                                                <option {{ (old("heureFerm".$tabJour[$i]) == $j ? "selected":"") }}
+                                                                                    value="<?= $j; ?>">
+                                                                                    <?= $j . "H"; ?>
+                                                                                </option>
+
+                                                                                <?php } ?>
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,12 +264,14 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="input-group">
-                                                                <div class="input-group-prepend"><span class="input-group-text">Indiquez la commune</span>
+                                                                <div class="input-group-prepend"><span
+                                                                        class="input-group-text">Indiquez la commune</span>
                                                                 </div>
                                                                 <select name="commune" class="form-control" id="">
                                                                     <option value="">Choisissez la commune</option>
                                                                     @foreach(App\commune::all() as $commune)
-                                                                        <option value="{{$commune->comId}}">{{$commune->libCom}}</option>
+                                                                        <option {{ (old("commune") == $commune->comId ? "selected":"") }}
+                                                                            value="{{$commune->comId}}">{{$commune->libCom}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -263,9 +279,13 @@
                                                         <div class="col-md-6">
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text">Plus de details</span>
+                                                                    <span
+                                                                        class="input-group-text">Plus de details</span>
                                                                 </div>
-                                                                <input placeholder="Ex: Adjamé derriere la grande mosquée" type="text" name="descriptionEmplacement" class="form-control">
+                                                                <input value="{{ old("descriptionEmplacement") }}"
+                                                                    placeholder="Ex: Adjamé derriere la grande mosquée"
+                                                                    type="text" name="descriptionEmplacement"
+                                                                    class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -274,8 +294,8 @@
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" id="lat" name="lat" required>
-                                                            <input type="hidden" id="lng" name="lng" required>
+                                                            <input type="hidden" value="{{ old("lat") }}" id="lat" name="lat" required>
+                                                            <input type="hidden" value="{{ old("lng") }}" id="lng" name="lng" required>
 
                                                             <div class="geocoder">
                                                                 <div id="geocoder"></div>
@@ -290,7 +310,9 @@
                                         <div class="main-card mb-3 card">
                                             <div class="card-body">
                                                 <input type="hidden" name="user" value="{{Auth::user()->id}}">
-                                                <button class="btn btn-success" type="submit" style="float: left; width: 100%">Et Hop ! On enregistre <i class="fa fa-send"></i></button>
+                                                <button class="btn btn-success" type="submit"
+                                                        style="float: left; width: 100%">Et Hop ! On enregistre <i
+                                                        class="fa fa-send"></i></button>
                                             </div>
                                         </div>
 
@@ -302,11 +324,31 @@
                         <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="main-card mb-3 card">
-                                        <div class="card-body"><h5 class="card-title">Input Groups</h5>
-                                            <div>
-                                                <form action="" enctype="multipart/form-data" method="post">
-                                                    @csrf
+                                    <form method="post" action="/AddProd" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body">
+                                                <div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend"><span class="input-group-text">De que entreprise il s'agit ?</span>
+                                                        </div>
+                                                        <select name="entreprise" class="form-control" id="">
+                                                            <option value="">Choisissez une entreprise</option>
+
+                                                            @php($entreprises = DB::table('entreprises')->where('id', '=', Auth::user()->id)->get())
+                                                            @foreach($entreprises as $entreprise)
+                                                                <option {{ (old("entreprise") == $entreprise->entrepriseId ? "selected":"") }}
+                                                                    value="{{$entreprise->entrepriseId}}">{{$entreprise->entrepriseTitle}}</option>
+                                                            @endforeach
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body">
+                                                <div>
                                                     <table id="item_table" class="table table-striped table-bordered">
                                                         <tr>
                                                             <th>Quelle est sa désignation</th>
@@ -321,10 +363,15 @@
                                                             </th>
                                                         </tr>
                                                     </table>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body">
+                                                <button class="btn btn-success" type="submit" style="float: left; width: 100%"><i class="fa fa-truck"></i> Approvisioner le stock</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -338,13 +385,16 @@
                                                     <div>
                                                         <form action="" enctype="multipart/form-data" method="post">
                                                             @csrf
-                                                            <table id="item_table1" class="table table-striped table-bordered">
+                                                            <table id="item_table1"
+                                                                   class="table table-striped table-bordered">
                                                                 <tr>
                                                                     <th>choisissez l'entreprise</th>
                                                                     <th>Selectionnez autant d'image possible</th>
                                                                     <th>
-                                                                        <button style="background: #28a745" type="button"
-                                                                                class="btn btn-success btn-sm add" id="addPicture"><i
+                                                                        <button style="background: #28a745"
+                                                                                type="button"
+                                                                                class="btn btn-success btn-sm add"
+                                                                                id="addPicture"><i
                                                                                 class="fa fa-plus"></i>
                                                                         </button>
                                                                     </th>
@@ -367,16 +417,19 @@
 
 
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet'/>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <script
+        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet'
+          href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css'
+          type='text/css'/>
 
     <!--Code pour la carte-->
     <script type="text/javascript">
 
-        var saved_markers = [-3.967696,5.356331];
-        var user_location = [-4.033333,5.316667];
+        var saved_markers = [-3.967696, 5.356331];
+        var user_location = [-4.033333, 5.316667];
         mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -391,17 +444,17 @@
             //country: 'IN',
         });
 
-        var marker ;
+        var marker;
 
         // After the map style has loaded on the page, add a source layer and default
         // styling for a single point.
-        map.on('load', function() {
-            addMarker(user_location,'load');
+        map.on('load', function () {
+            addMarker(user_location, 'load');
             add_markers(saved_markers);
 
             // Listen for the `result` event from the MapboxGeocoder that is triggered when a user
             // makes a selection and add a symbol that matches the result.
-            geocoder.on('result', function(ev) {
+            geocoder.on('result', function (ev) {
                 //alert("aaaaa");
                 console.log(ev.result.center);
 
@@ -410,23 +463,24 @@
 
         map.on('click', function (e) {
             marker.remove();
-            addMarker(e.lngLat,'click');
+            addMarker(e.lngLat, 'click');
             //console.log(e.lngLat.lat);
             document.getElementById("lat").value = e.lngLat.lat;
             document.getElementById("lng").value = e.lngLat.lng;
 
         });
 
-        function addMarker(ltlng,event) {
+        function addMarker(ltlng, event) {
 
-            if(event === 'click'){
+            if (event === 'click') {
                 user_location = ltlng;
             }
-            marker = new mapboxgl.Marker({draggable: true,color:"#d02922"})
+            marker = new mapboxgl.Marker({draggable: true, color: "#d02922"})
                 .setLngLat(user_location)
                 .addTo(map)
                 .on('dragend', onDragEnd);
         }
+
         // function add_markers(coordinates) {
         //
         //     var geojson = (saved_markers == coordinates ? saved_markers : '');
@@ -470,17 +524,17 @@
 
     </script>
 
-    <!--Code pour les jour de disponiblité-->
+    <!--Code pour les jours de disponiblité-->
     <script type="text/javascript">
 
         function voir(e) {
 
-            if(document.getElementById('j'+e).checked){
+            if (document.getElementById('j' + e).checked) {
 
-                document.getElementById('div'+e).style.display = "inline-block";
+                document.getElementById('div' + e).style.display = "inline-block";
 
-            }else{
-                document.getElementById('div'+e).style.display = "none";
+            } else {
+                document.getElementById('div' + e).style.display = "none";
             }
 
         }

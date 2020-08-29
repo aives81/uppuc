@@ -131,6 +131,7 @@ class CreateUsersTable extends Migration
             $table->string('typeProdServ');
             $table->float('prixProdServ');
             $table->string('slugProdServ');
+            $table->text('imgProdServ');
             $table->unsignedBigInteger('entrepriseId');
             $table->foreign('entrepriseId')
                 ->references('entrepriseId')->on('entreprises')

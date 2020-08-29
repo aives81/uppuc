@@ -65,6 +65,11 @@ Route::get('/Entreprise/Ajouter-une-entreprise', 'entrepriseController@create');
  * Route pour les traitements liés au pages de profil de l'user
 */
 //Sur les pages de traitement rajouter les ->auth();
+//Enregistrement d'une entreprise
 Route::post('/addEntreprise', 'entrepriseController@store');
 
+//Enregistrement des produits d'une entreprise
+Route::post('/AddProd', 'prodServController@store');
+
+//Déconnexion
 Route::get('/Utilisateur/Logout', 'userController@logout');
