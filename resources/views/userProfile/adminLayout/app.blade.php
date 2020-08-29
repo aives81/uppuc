@@ -570,22 +570,6 @@
         });
     });
 
-    $(document).ready(function () {
-        //Ajouter image
-        $(document).on('click', '#addPicture', function () {
-            var html = '';
-            html += '<tr>';
-            html += '<td><select class="form-control" name="entreprise[]" required><option value="">Choisissez le type</option><option value="prod">Produit</option><option value="serv">Service</option></select></td>';
-            html += '<td><input type="file" required name="img[]" multiple class="form-control"></td>';
-            html += '<td><button style="background: #dc3545;" type="button" name="remove" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></button></td></tr>';
-            $('#item_table1').append(html);
-        });
-
-        $(document).on('click', '.remove', function () {
-            $(this).closest('tr').remove();
-        });
-    });
-
     $(document).ready(function() {
         $('#example').DataTable();
     } );

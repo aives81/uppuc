@@ -89,7 +89,7 @@
                         </li>
                         <li class="nav-item">
                             <a role="tab" class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2">
-                                <span>Illustrez mieux vaux entreprises</span>
+                                <span>Illustrez mieux vos entreprises</span>
                             </a>
                         </li>
                     </ul>
@@ -122,7 +122,8 @@
                                                         <div class="input-group-prepend"><span class="input-group-text">Nom de l'entreprise</span>
                                                         </div>
                                                         <input placeholder="Ex: Un Pas Pour Une Course" type="text"
-                                                               value="{{ old("title") }}" name="title" class="form-control">
+                                                               value="{{ old("title") }}" name="title"
+                                                               class="form-control">
                                                     </div>
                                                     <br>
                                                     <div class="input-group">
@@ -142,7 +143,8 @@
                                                                 <select name="categorie" class="form-control" id="">
                                                                     <option value="">Choisissez la catégorie</option>
                                                                     @foreach(App\categorie::all() as $categorie)
-                                                                        <option {{ (old("categorie") == $categorie->catId ? "selected":"") }}
+                                                                        <option
+                                                                            {{ (old("categorie") == $categorie->catId ? "selected":"") }}
                                                                             value="{{$categorie->catId}}">{{$categorie->libCat}}</option>
                                                                     @endforeach
                                                                 </select>
@@ -180,13 +182,14 @@
                                                                     <div class="custom-checkbox custom-control">
                                                                         <div class="position-relative form-check">
                                                                             <label class="form-check-label">
-                                                                                <input {{ (old("j") == $tabJour[$i] ? "checked":"") }}
-                                                                                       type="checkbox"
-                                                                                       id="j<?= $i + 1; ?>"
-                                                                                       value="<?= $tabJour[$i]; ?>"
-                                                                                       name="j[]"
-                                                                                       onchange="voir(<?= $i + 1; ?>);"
-                                                                                       class="form-check-input">
+                                                                                <input
+                                                                                    {{ (old("j") == $tabJour[$i] ? "checked":"") }}
+                                                                                    type="checkbox"
+                                                                                    id="j<?= $i + 1; ?>"
+                                                                                    value="<?= $tabJour[$i]; ?>"
+                                                                                    name="j[]"
+                                                                                    onchange="voir(<?= $i + 1; ?>);"
+                                                                                    class="form-check-input">
                                                                                 <?= $tabJour[$i]; ?>
                                                                             </label>
                                                                         </div>
@@ -209,11 +212,13 @@
                                                                                     name="heureOuv<?= $tabJour[$i]; ?>"
                                                                                     id="heureOuv<?= $tabJour[$i]; ?>">
 
-                                                                                <option value="">Heure d'ouverture</option>
+                                                                                <option value="">Heure d'ouverture
+                                                                                </option>
 
                                                                                 <?php for ($j = 1; $j <= 24 ; $j++) { ?>
 
-                                                                                <option {{ (old("heureOuv".$tabJour[$i]) == $j ? "selected":"") }}
+                                                                                <option
+                                                                                    {{ (old("heureOuv".$tabJour[$i]) == $j ? "selected":"") }}
                                                                                     value="<?= $j; ?>">
                                                                                     <?= $j . "H"; ?>
                                                                                 </option>
@@ -233,11 +238,13 @@
                                                                                     name="heureFerm<?= $tabJour[$i]; ?>"
                                                                                     id="heureFerm<?= $tabJour[$i]; ?>">
 
-                                                                                <option value="">Heure de ferméture</option>
+                                                                                <option value="">Heure de ferméture
+                                                                                </option>
 
                                                                                 <?php for ($j = 1; $j <= 24 ; $j++) { ?>
 
-                                                                                <option {{ (old("heureFerm".$tabJour[$i]) == $j ? "selected":"") }}
+                                                                                <option
+                                                                                    {{ (old("heureFerm".$tabJour[$i]) == $j ? "selected":"") }}
                                                                                     value="<?= $j; ?>">
                                                                                     <?= $j . "H"; ?>
                                                                                 </option>
@@ -270,7 +277,8 @@
                                                                 <select name="commune" class="form-control" id="">
                                                                     <option value="">Choisissez la commune</option>
                                                                     @foreach(App\commune::all() as $commune)
-                                                                        <option {{ (old("commune") == $commune->comId ? "selected":"") }}
+                                                                        <option
+                                                                            {{ (old("commune") == $commune->comId ? "selected":"") }}
                                                                             value="{{$commune->comId}}">{{$commune->libCom}}</option>
                                                                     @endforeach
                                                                 </select>
@@ -283,9 +291,9 @@
                                                                         class="input-group-text">Plus de details</span>
                                                                 </div>
                                                                 <input value="{{ old("descriptionEmplacement") }}"
-                                                                    placeholder="Ex: Adjamé derriere la grande mosquée"
-                                                                    type="text" name="descriptionEmplacement"
-                                                                    class="form-control">
+                                                                       placeholder="Ex: Adjamé derriere la grande mosquée"
+                                                                       type="text" name="descriptionEmplacement"
+                                                                       class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -294,8 +302,10 @@
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="hidden" value="{{ old("lat") }}" id="lat" name="lat" required>
-                                                            <input type="hidden" value="{{ old("lng") }}" id="lng" name="lng" required>
+                                                            <input type="hidden" value="{{ old("lat") }}" id="lat"
+                                                                   name="lat" required>
+                                                            <input type="hidden" value="{{ old("lng") }}" id="lng"
+                                                                   name="lng" required>
 
                                                             <div class="geocoder">
                                                                 <div id="geocoder"></div>
@@ -330,14 +340,15 @@
                                             <div class="card-body">
                                                 <div>
                                                     <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text">De que entreprise il s'agit ?</span>
+                                                        <div class="input-group-prepend"><span class="input-group-text">De quelle entreprise il s'agit-il ?</span>
                                                         </div>
                                                         <select name="entreprise" class="form-control" id="">
-                                                            <option value="">Choisissez une entreprise</option>
+                                                            <option value="">Choisissez une entreprise*</option>
 
                                                             @php($entreprises = DB::table('entreprises')->where('id', '=', Auth::user()->id)->get())
                                                             @foreach($entreprises as $entreprise)
-                                                                <option {{ (old("entreprise") == $entreprise->entrepriseId ? "selected":"") }}
+                                                                <option
+                                                                    {{ (old("entreprise") == $entreprise->entrepriseId ? "selected":"") }}
                                                                     value="{{$entreprise->entrepriseId}}">{{$entreprise->entrepriseTitle}}</option>
                                                             @endforeach
 
@@ -351,13 +362,14 @@
                                                 <div>
                                                     <table id="item_table" class="table table-striped table-bordered">
                                                         <tr>
-                                                            <th>Quelle est sa désignation</th>
-                                                            <th>Est ce un produit ou un service ?</th>
-                                                            <th>Quel est son prix ?</th>
-                                                            <th>Une image descriptive</th>
+                                                            <th>Quelle est sa désignation*</th>
+                                                            <th>Est ce un produit ou un service ?*</th>
+                                                            <th>Quel est son prix ?*</th>
+                                                            <th>Une image descriptive*</th>
                                                             <th>
                                                                 <button style="background: #28a745" type="button"
-                                                                        class="btn btn-success btn-sm add" id="addProd"><i
+                                                                        class="btn btn-success btn-sm add" id="addProd">
+                                                                    <i
                                                                         class="fa fa-plus"></i>
                                                                 </button>
                                                             </th>
@@ -368,7 +380,10 @@
                                         </div>
                                         <div class="main-card mb-3 card">
                                             <div class="card-body">
-                                                <button class="btn btn-success" type="submit" style="float: left; width: 100%"><i class="fa fa-truck"></i> Approvisioner le stock</button>
+                                                <button class="btn btn-success" type="submit"
+                                                        style="float: left; width: 100%"><i class="fa fa-truck"></i>
+                                                    Approvisioner le stock
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
@@ -376,38 +391,60 @@
                             </div>
                         </div>
                         <div class="tab-pane tabs-animation fade" id="tab-content-2" role="tabpanel">
-                            <form class="">
-                                <div class="row">
-                                    <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="/AddPicture" enctype="multipart/form-data" method="post">
+                                        @csrf
                                         <div class="main-card mb-3 card">
-                                            <div class="card-body"><h5 class="card-title">Checkboxes</h5>
+                                            <div class="card-body">
                                                 <div class="position-relative form-group">
                                                     <div>
-                                                        <form action="" enctype="multipart/form-data" method="post">
-                                                            @csrf
-                                                            <table id="item_table1"
-                                                                   class="table table-striped table-bordered">
-                                                                <tr>
-                                                                    <th>choisissez l'entreprise</th>
-                                                                    <th>Selectionnez autant d'image possible</th>
-                                                                    <th>
-                                                                        <button style="background: #28a745"
-                                                                                type="button"
-                                                                                class="btn btn-success btn-sm add"
-                                                                                id="addPicture"><i
-                                                                                class="fa fa-plus"></i>
-                                                                        </button>
-                                                                    </th>
-                                                                </tr>
-                                                            </table>
-                                                        </form>
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend"><span
+                                                                            class="input-group-text">De quelle entreprise s'agit-il ? *</span>
+                                                                    </div>
+                                                                    <select name="entreprise" class="form-control"
+                                                                            id="">
+                                                                        <option value="">Choisissez une entreprise
+                                                                        </option>
+
+                                                                        @php($entreprises = DB::table('entreprises')->where('id', '=', Auth::user()->id)->get())
+                                                                        @foreach($entreprises as $entreprise)
+                                                                            <option
+                                                                                {{ (old("entreprise") == $entreprise->entrepriseId ? "selected":"") }}
+                                                                                value="{{$entreprise->entrepriseId}}">{{$entreprise->entrepriseTitle}}</option>
+                                                                        @endforeach
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend"><span
+                                                                            class="input-group-text">Choisissez les images *</span>
+                                                                    </div>
+                                                                    <input type="file" name="pictures[]" multiple
+                                                                           class="form-control" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body">
+                                                <button class="btn btn-success" type="submit"
+                                                        style="float: left; width: 100%"><i class="fa fa-paint-brush"></i>
+                                                    Redonnez une peau neuve à votre entreprise
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

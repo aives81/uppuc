@@ -71,5 +71,8 @@ Route::post('/addEntreprise', 'entrepriseController@store');
 //Enregistrement des produits d'une entreprise
 Route::post('/AddProd', 'prodServController@store');
 
+//Enregistrement des images d'une entreprise
+Route::post('/AddPicture', 'imageController@store');
+
 //Déconnexion
 Route::get('/Utilisateur/Logout', 'userController@logout');
