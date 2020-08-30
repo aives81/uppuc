@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6424e892-87bb-4735-a9a9-e1dc7070ecef" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/uppuc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uppuc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/image.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/image.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userProfile/adminLayout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userProfile/adminLayout/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/userProfile/createEntreprise.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/userProfile/createEntreprise.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,6 +145,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\uppuc\app\Utilities" />
       <recent name="C:\xampp\htdocs\uppuc\resources\views\userProfile\adminLayout" />
     </key>
   </component>
@@ -197,7 +197,8 @@
       <workItem from="1598661958075" duration="1787000" />
       <workItem from="1598663775107" duration="1786000" />
       <workItem from="1598665588773" duration="1786000" />
-      <workItem from="1598667405105" duration="809000" />
+      <workItem from="1598667405105" duration="1009000" />
+      <workItem from="1598744944894" duration="3397000" />
     </task>
     <servers />
   </component>
